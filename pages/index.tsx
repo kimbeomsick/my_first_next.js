@@ -12,8 +12,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const API_URL =
-    "https:///makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
+
+  //브라우저 환경에서 환경변수 꺼내는 방법
+  const API_URL:string = process.env.NEXT_PUBLIC_API_URL || '';
 
   function getData() {
     axios.get(API_URL).then((res: any) => {

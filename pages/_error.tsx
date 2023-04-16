@@ -20,6 +20,7 @@ function Error({statusCode}:any){
 
 //클라이언트와 서버측 에러를 모두 여기서 관리할 수 있다. 
 Error.getInitialProps = ({res,err}:any) =>{
+    //여기서 404도 처리할 수 있지만 404는 굳이 서버까지 다녀오지 않아도 되기때문에 404.tsx파일로 만들어 주었다. 
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     return {statusCode};
 }

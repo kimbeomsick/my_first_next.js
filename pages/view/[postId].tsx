@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Item from "../src/component/Item";
 import { Loader } from "semantic-ui-react";
 
-export default function Post({ item }: any) {
+export default function Post({ item, name }: any) {
   //여기 코드가 전부 필요 없다.
 
   //현재 로딩중인지 표시할 state
@@ -59,8 +59,9 @@ export default function Post({ item }: any) {
             <meta
               name="상세 페지이"
               content="제품에 대한 상세 페이지 입니다. "
-            />
+              />
           </Head>
+              {name}환경입니다.
           <Item item={item}></Item>
         </>
       )}
@@ -72,6 +73,9 @@ export default function Post({ item }: any) {
 export async function getServerSideProps(context: any) {
   //현제 url의 params를 꺼내올 수 있다.
   const id = context.params.postId;
+
+  //이곳은 node.js 환경이라고 할 수 있다. 
+  // 서버에서 동작하기 때문에 window. 같은거 사용하면 에러가 발생한다. 
   const apiUrl = `https:///makeup-api.herokuapp.com/api/v1/products/${id}json`;
   const res = await axios.get(apiUrl);
   const data = res.data;
@@ -80,6 +84,7 @@ export async function getServerSideProps(context: any) {
   return {
     props: {
       item: data, //이 프롭스는 Post 컴포넌트의 Props가 된다. 즉 위에서 item으로 받을 수있다.
+      name : process.env.name
     },
   };
 }
