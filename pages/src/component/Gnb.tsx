@@ -34,8 +34,10 @@ export default function Gnb() {
             //이렇게 해도 된다. 하지만 페이지가 항상 새로고침된다. 
             //안의 내용물만 바뀌는게 아니라 아예 새로고침 되기 때문에 재사용되는 부분까지 불러오게 된다. 
             //spa의 장점이 사라진다. 그리고 상태관리도 다 날아가게 된다. 
-        }else{
-
+        }else if(data.name === "content"){
+            router.push("/content")
+            //자주 사용하는 에러페이지가 서버에서 랜더링 된다면 괜히 비용만 증가하고 별로 좋지 않다. 
+            //그래서 next.js에서는 이런 페이지가 static으로 제공된다. 
         }
     }
 
@@ -50,6 +52,11 @@ export default function Gnb() {
       <Menu.Item
         name="about"
         active={activeItem === "about"}
+        onClick={goLink}
+      />
+      <Menu.Item
+        name="content"
+        active={activeItem === "content"}
         onClick={goLink}
       />
      
