@@ -2,12 +2,12 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="en">
-      <Head />
+    <Html lang="ko">
+      <Head title='next.js'/>
       <body>
         <Main />
         <NextScript />
-      </body>
+      </body> 
     </Html>
   )
 }
