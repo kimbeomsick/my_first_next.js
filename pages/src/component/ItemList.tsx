@@ -12,7 +12,8 @@ export default function ItemList(props: any) {
           {list.map((item: any, i: number) => {
             return (
               <Grid.Column key={i}>
-                <Link href={`/view/${item.id}`}>
+                {/* href는 실제 이동하는 경로이고 as는 브라우저 표시되는 주소이다.  */}
+                <Link href="/view/[postId]" as={`/view/${item.id}`}>
                   <div className={styles.wrap}>
                     <img
                       src={item.image_link}
