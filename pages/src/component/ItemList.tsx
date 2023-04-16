@@ -9,7 +9,7 @@ export default function ItemList(props: any) {
     <div>
       <Grid columns={3} divided>
         <Grid.Row>
-          {list.map((item: any, i: number) => {
+          {list && list.map((item: any, i: number) => {
             return (
               <Grid.Column key={i}>
                 {/* href는 실제 이동하는 경로이고 as는 브라우저 표시되는 주소이다.  */}

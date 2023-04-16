@@ -4,6 +4,7 @@
 // 근데 정적페이지로 만들면 서버로 에러가 가지 않기 때문에 안됨
 
 function Error({statusCode}:any){
+    console.log("statusCode >>> ",statusCode)
     return(
         <>
             <p>
@@ -19,7 +20,7 @@ function Error({statusCode}:any){
 
 //클라이언트와 서버측 에러를 모두 여기서 관리할 수 있다. 
 Error.getInitialProps = ({res,err}:any) =>{
-    const statusCode = res ? res.statusCode : res;
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     return {statusCode};
 }
 
